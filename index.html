@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEX Robotics Team</title>
+    <title>VEX V5 Robotics Team</title>
     <style>
         * {
             margin: 0;
@@ -11,40 +11,136 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0a0a;
-            color: #fff;
-            overflow-x: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ED1C24, #c41820);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .team-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ED1C24;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 1rem;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ED1C24;
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a:hover {
+            color: #ED1C24;
+        }
+
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            text-align: center;
+            padding: 0 2rem;
             overflow: hidden;
+            background: linear-gradient(135deg, rgba(237, 28, 36, 0.9), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920') center/cover;
+            background-attachment: fixed;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
+            animation: shine 3s infinite;
         }
 
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .hero-content {
-            text-align: center;
             z-index: 1;
             animation: fadeInUp 1s ease;
         }
@@ -60,24 +156,80 @@
             }
         }
 
-        .hero h1 {
-            font-size: 5rem;
+        .hero-content h1 {
+            font-size: 4.5rem;
             font-weight: 900;
+            color: white;
             margin-bottom: 1rem;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
         }
 
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3); }
-            to { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.5); }
+        .hero-content .subtitle {
+            font-size: 1.8rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
-        .hero p {
-            font-size: 1.5rem;
-            opacity: 0.9;
+        .hero-logo-large {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
         }
 
+        .hero-logo-large img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Scroll Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 50px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 25px;
+            cursor: pointer;
+        }
+
+        .scroll-down::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { top: 10px; opacity: 1; }
+            100% { top: 30px; opacity: 0; }
+        }
+
+        /* Sections */
         .section {
             padding: 100px 20px;
             max-width: 1200px;
@@ -85,30 +237,46 @@
         }
 
         .section-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 60px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
+            color: #1a1a1a;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #ED1C24, #ff4655);
+            border-radius: 2px;
+        }
+
+        /* Team Section */
+        #equipe {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
             margin-top: 40px;
         }
 
         .team-card {
-            background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-            border-radius: 20px;
-            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid transparent;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
         }
@@ -116,60 +284,71 @@
         .team-card::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.6s;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ED1C24, #ff4655);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
 
         .team-card:hover::before {
-            left: 100%;
+            transform: scaleX(1);
         }
 
         .team-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #667eea;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(237, 28, 36, 0.15);
         }
 
         .team-photo {
-            width: 150px;
-            height: 150px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #ED1C24, #ff4655);
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            transition: all 0.3s;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 20px rgba(237, 28, 36, 0.3);
+            transition: transform 0.3s;
+            color: white;
+            font-weight: bold;
+        }
+
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .team-card:hover .team-photo {
-            transform: rotate(360deg) scale(1.1);
+            transform: scale(1.1);
         }
 
         .team-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
-            color: #fff;
+            color: #1a1a1a;
         }
 
         .team-role {
-            color: #667eea;
+            color: #ED1C24;
             font-size: 1rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
         }
 
+        /* Robot Section */
         .robot-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            background: white;
             padding: 100px 20px;
-            position: relative;
         }
 
         .robot-showcase {
@@ -183,225 +362,454 @@
 
         .robot-image {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 20px;
+            height: 450px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            animation: float 3s ease-in-out infinite;
-            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+        .robot-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .robot-image::after {
+            content: 'Insérer photo du robot';
+            position: absolute;
+            font-size: 1.2rem;
+            color: #999;
+            font-weight: 500;
         }
 
         .robot-info h3 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #667eea;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            font-weight: 700;
         }
 
         .robot-info p {
             font-size: 1.1rem;
-            line-height: 1.8;
-            color: #ccc;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 20px;
         }
 
+        .robot-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .feature {
+            background: linear-gradient(135deg, #f8f9fa, #fff);
+            padding: 18px;
+            border-radius: 10px;
+            border-left: 4px solid #ED1C24;
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateX(5px);
+        }
+
+        /* Sponsors Section */
         .sponsors-section {
             padding: 100px 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
         .sponsors-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 35px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .sponsor-card {
-            background: #1a1a1a;
-            border-radius: 15px;
-            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
-            height: 150px;
+            height: 160px;
             transition: all 0.3s;
-            border: 2px solid #2a2a2a;
+            border: 2px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sponsor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(237, 28, 36, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .sponsor-card:hover::before {
+            left: 100%;
         }
 
         .sponsor-card:hover {
             transform: translateY(-5px);
-            border-color: #667eea;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            border-color: #ED1C24;
+            box-shadow: 0 10px 30px rgba(237, 28, 36, 0.15);
         }
 
         .sponsor-logo {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            color: #667eea;
+            color: #333;
             text-align: center;
         }
 
+        .sponsor-logo img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        /* Gallery Section */
         .gallery-section {
             padding: 100px 20px;
-            background: #0a0a0a;
+            background: white;
         }
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .gallery-item {
-            height: 250px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 15px;
+            height: 280px;
+            background: #f0f0f0;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            transition: all 0.3s;
+            transition: all 0.4s;
             cursor: pointer;
             overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             position: relative;
         }
 
         .gallery-item::after {
-            content: '📷';
+            content: 'Ajouter une photo';
             position: absolute;
-            font-size: 2rem;
-            opacity: 0.5;
+            font-size: 1.1rem;
+            color: #999;
+            font-weight: 500;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .gallery-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 40px rgba(237, 28, 36, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #fff;
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: #ED1C24;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: #ED1C24;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .contact-info p {
+            color: #ccc;
+            margin-bottom: 12px;
+            font-size: 1rem;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero p { font-size: 1.2rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content .subtitle { font-size: 1.3rem; }
             .section-title { font-size: 2rem; }
             .robot-showcase { grid-template-columns: 1fr; }
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-            40% { transform: translateX(-50%) translateY(-10px); }
-            60% { transform: translateX(-50%) translateY(-5px); }
-        }
-
-        .scroll-indicator::before {
-            content: '⌄';
-            font-size: 3rem;
-            color: white;
-            opacity: 0.7;
+            nav ul { 
+                gap: 1rem; 
+                font-size: 0.85rem; 
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .robot-features { grid-template-columns: 1fr; }
+            .hero-logo-large { width: 100px; height: 100px; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>🤖 VEX V5 ROBOTICS</h1>
-            <p>Innovation • Passion • Excellence</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo-container">
+                <div class="nav-logo">
+                    <!-- Remplacez le texte par: <img src="votre-logo.png" alt="Logo"> -->
+                    VEX
+                </div>
+                <span class="team-name">VEX Robotics</span>
+            </div>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#equipe">Équipe</a></li>
+                <li><a href="#robot">Robot</a></li>
+                <li><a href="#sponsors">Sponsors</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+            </ul>
         </div>
-        <div class="scroll-indicator"></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="hero-content">
+            <div class="hero-logo-large">
+                <!-- Remplacez par: <img src="votre-grand-logo.png" alt="Logo"> -->
+                <div style="font-size: 4rem; font-weight: 900; color: white;">VEX</div>
+            </div>
+            <h1>VEX V5 ROBOTICS TEAM</h1>
+            <p class="subtitle">Excellence • Innovation • Compétition</p>
+        </div>
+        <div class="scroll-down"></div>
     </section>
 
     <!-- Team Section -->
-    <section class="section">
+    <section id="equipe" class="section">
         <h2 class="section-title">Notre Équipe</h2>
         <div class="team-grid">
             <div class="team-card">
-                <div class="team-photo">👨‍💻</div>
+                <div class="team-photo">
+                    <!-- Remplacez par: <img src="photo-membre.jpg" alt="Alex Martin"> -->
+                    AM
+                </div>
                 <h3 class="team-name">Alex Martin</h3>
-                <p class="team-role">Captain & Programmeur</p>
+                <p class="team-role">Capitaine & Programmeur</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👩‍🔧</div>
+                <div class="team-photo">
+                    <!-- Remplacez par: <img src="photo-membre.jpg" alt="Sarah Chen"> -->
+                    SC
+                </div>
                 <h3 class="team-name">Sarah Chen</h3>
                 <p class="team-role">Ingénieure Mécanique</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👨‍🔬</div>
+                <div class="team-photo">
+                    <!-- Remplacez par: <img src="photo-membre.jpg" alt="Lucas Dubois"> -->
+                    LD
+                </div>
                 <h3 class="team-name">Lucas Dubois</h3>
                 <p class="team-role">Designer CAD</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">👩‍💼</div>
+                <div class="team-photo">
+                    <!-- Remplacez par: <img src="photo-membre.jpg" alt="Emma Laurent"> -->
+                    EL
+                </div>
                 <h3 class="team-name">Emma Laurent</h3>
-                <p class="team-role">Stratège & Marketing</p>
+                <p class="team-role">Stratège & Communication</p>
             </div>
         </div>
     </section>
 
     <!-- Robot Section -->
-    <section class="robot-section">
+    <section id="robot" class="robot-section">
+        <h2 class="section-title">Notre Robot VEX V5</h2>
         <div class="robot-showcase">
-            <div class="robot-image">🤖</div>
+            <div class="robot-image">
+                <!-- Remplacez par: <img src="photo-robot.jpg" alt="Robot VEX V5"> -->
+            </div>
             <div class="robot-info">
-                <h3>Notre Robot VEX V5</h3>
-                <p>Conçu avec précision et innovation, notre robot combine puissance et agilité. Équipé des dernières technologies VEX V5, il est optimisé pour la compétition avec des capacités exceptionnelles de manipulation d'objets et de navigation autonome.</p>
-                <p style="margin-top: 20px;">Features: Autonomous mode • Precision control • High torque motors • Smart sensors</p>
+                <h3>Conception & Performance</h3>
+                <p>Notre robot a été conçu avec précision pour répondre aux exigences de la compétition VEX V5. Il combine efficacité mécanique et programmation avancée pour offrir des performances optimales.</p>
+                <p>Chaque composant a été soigneusement sélectionné et testé pour garantir fiabilité et robustesse dans toutes les situations de compétition.</p>
+                <div class="robot-features">
+                    <div class="feature">Mode Autonome</div>
+                    <div class="feature">Contrôle de Précision</div>
+                    <div class="feature">Moteurs Haute Performance</div>
+                    <div class="feature">Capteurs Intelligents</div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Sponsors Section -->
-    <section class="sponsors-section">
+    <section id="sponsors" class="sponsors-section">
         <h2 class="section-title">Nos Sponsors</h2>
         <div class="sponsors-grid">
             <div class="sponsor-card">
-                <div class="sponsor-logo">SPONSOR 1</div>
+                <div class="sponsor-logo">
+                    <!-- Remplacez par: <img src="logo-sponsor1.png" alt="Sponsor 1"> -->
+                    SPONSOR 1
+                </div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo">SPONSOR 2</div>
+                <div class="sponsor-logo">
+                    <!-- Remplacez par: <img src="logo-sponsor2.png" alt="Sponsor 2"> -->
+                    SPONSOR 2
+                </div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo">SPONSOR 3</div>
+                <div class="sponsor-logo">
+                    <!-- Remplacez par: <img src="logo-sponsor3.png" alt="Sponsor 3"> -->
+                    SPONSOR 3
+                </div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo">SPONSOR 4</div>
+                <div class="sponsor-logo">
+                    <!-- Remplacez par: <img src="logo-sponsor4.png" alt="Sponsor 4"> -->
+                    SPONSOR 4
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <section id="galerie" class="gallery-section">
         <h2 class="section-title">Galerie Photos</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">🏆</div>
-            <div class="gallery-item">⚙️</div>
-            <div class="gallery-item">🔧</div>
-            <div class="gallery-item">🎯</div>
-            <div class="gallery-item">💡</div>
-            <div class="gallery-item">🚀</div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo1.jpg" alt="Photo 1"> -->
+            </div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo2.jpg" alt="Photo 2"> -->
+            </div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo3.jpg" alt="Photo 3"> -->
+            </div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo4.jpg" alt="Photo 4"> -->
+            </div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo5.jpg" alt="Photo 5"> -->
+            </div>
+            <div class="gallery-item">
+                <!-- Remplacez par: <img src="photo6.jpg" alt="Photo 6"> -->
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#equipe">Notre Équipe</a></li>
+                    <li><a href="#robot">Notre Robot</a></li>
+                    <li><a href="#sponsors">Sponsors</a></li>
+                    <li><a href="#galerie">Galerie</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <div class="contact-info">
+                    <p>📧 contact@vexteam.com</p>
+                    <p>📱 +33 1 23 45 67 89</p>
+                    <p>📍 Votre Ville, France</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>À Propos</h3>
+                <p style="color: #ccc; font-size: 1rem; line-height: 1.8;">
+                    Nous sommes une équipe passionnée de robotique, participant aux compétitions VEX V5 et représentant notre établissement avec fierté et excellence.
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 VEX V5 Robotics Team. Tous droits réservés.</p>
+        </div>
+    </footer>
+
     <script>
-        // Animation au scroll
+        // Smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -418,15 +826,6 @@
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
-        });
-
-        // Parallax effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero');
-            if (parallax) {
-                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
         });
     </script>
 </body>
