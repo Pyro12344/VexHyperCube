@@ -917,7 +917,7 @@
         async function donateWithStripe(amount) {
             try {
                 // This would need your backend endpoint
-                const response = await fetch('YOUR_BACKEND_URL/create-checkout-session', {
+                const response = await fetch('https://sgpckkziwvsqcrqguqfm.supabase.co', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -931,7 +931,7 @@
                 const session = await response.json();
                 
                 // Redirect to Stripe Checkout
-                const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+                const stripe = Stripe('pk_test_51SNGY8Rv5M9qa2FfyMUq11a6iqKkJ3yl0pER511so3UqF383RZZRWlIpaf7SqQnbXzmfIpHvk02MZE52CasGMgZl00DxXkVMT9');
                 const result = await stripe.redirectToCheckout({
                     sessionId: session.id
                 });
