@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,13 +62,6 @@
             font-size: 1.2rem;
         }
 
-        .nav-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 8px;
-        }
-
         .team-name {
             font-size: 1.2rem;
             font-weight: 700;
@@ -120,8 +113,7 @@
             padding: 0 2rem;
             overflow: hidden;
             background: linear-gradient(135deg, rgba(237, 28, 36, 0.9), rgba(0, 0, 0, 0.7)),
-                        url('./IMG_0761.jpeg') center/cover;
-            background-attachment: fixed;
+                        #1a1a1a;
         }
 
         .hero::before {
@@ -185,12 +177,6 @@
             align-items: center;
             justify-content: center;
             animation: float 3s ease-in-out infinite;
-        }
-
-        .hero-logo-large img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
         }
 
         @keyframes float {
@@ -259,7 +245,7 @@
         }
 
         /* Team Section */
-        #equipe {
+        #team {
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         }
 
@@ -319,18 +305,11 @@
             font-weight: bold;
         }
 
-        .team-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
         .team-card:hover .team-photo {
             transform: scale(1.1);
         }
 
-        .team-name {
+        .member-name {
             font-size: 1.4rem;
             font-weight: 700;
             margin-bottom: 10px;
@@ -371,19 +350,8 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             overflow: hidden;
             position: relative;
-        }
-
-        .robot-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .robot-image::after {
-            position: absolute;
-            font-size: 1.2rem;
-            color: #999;
-            font-weight: 500;
+            font-size: 3rem;
+            color: #ED1C24;
         }
 
         .robot-info h3 {
@@ -420,6 +388,119 @@
 
         .feature:hover {
             transform: translateX(5px);
+        }
+
+        /* Donations Section */
+        .donations-section {
+            background: linear-gradient(135deg, #ED1C24 0%, #c41820 100%);
+            padding: 100px 20px;
+            color: white;
+        }
+
+        .donations-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .donations-section .section-title {
+            color: white;
+        }
+
+        .donations-section .section-title::after {
+            background: white;
+        }
+
+        .donation-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 40px;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .donation-btn {
+            background: white;
+            color: #ED1C24;
+            border: none;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .donation-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: #f8f9fa;
+        }
+
+        .custom-amount {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .custom-input {
+            flex: 1;
+            padding: 18px;
+            border: 2px solid white;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+
+        .custom-input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .donate-custom-btn {
+            padding: 18px 40px;
+            background: white;
+            color: #ED1C24;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .donate-custom-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            width: 60px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #333;
+            font-size: 0.75rem;
         }
 
         /* Sponsors Section */
@@ -478,12 +559,6 @@
             text-align: center;
         }
 
-        .sponsor-logo img {
-            max-width: 100%;
-            max-height: 80px;
-            object-fit: contain;
-        }
-
         /* Gallery Section */
         .gallery-section {
             padding: 100px 20px;
@@ -510,20 +585,9 @@
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             position: relative;
-        }
-
-        .gallery-item::after {
-            content: 'Ajouter une photo';
-            position: absolute;
-            font-size: 1.1rem;
             color: #999;
             font-weight: 500;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            font-size: 1.1rem;
         }
 
         .gallery-item:hover {
@@ -604,6 +668,8 @@
             }
             .robot-features { grid-template-columns: 1fr; }
             .hero-logo-large { width: 100px; height: 100px; }
+            .donation-amounts { grid-template-columns: repeat(2, 1fr); }
+            .custom-amount { flex-direction: column; }
         }
     </style>
 </head>
@@ -612,57 +678,57 @@
     <nav>
         <div class="nav-container">
             <div class="logo-container">
-                <div class="nav-logo">
-                    <img src="IMG_0758.jpeg">
-                </div>
-                <span class="team-name">Vex Hyper Cube</span>
+                <div class="nav-logo">VHC</div>
+                <span class="team-name">VEX Hyper Cube</span>
             </div>
             <ul>
-                <li><a href="#accueil">Home</a></li>
-                <li><a href="#equipe">Team</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#team">Team</a></li>
                 <li><a href="#robot">Robot</a></li>
+                <li><a href="#donate">Donate</a></li>
                 <li><a href="#sponsors">Sponsors</a></li>
-                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#gallery">Gallery</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="hero">
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Vex Hyper Cube</h1>
-            <p class="subtitle">Excellence • Innovation • Compétition</p>
+            <div class="hero-logo-large">🤖</div>
+            <h1>VEX Hyper Cube</h1>
+            <p class="subtitle">Excellence • Innovation • Competition</p>
         </div>
         <div class="scroll-down"></div>
     </section>
 
     <!-- Team Section -->
-    <section id="equipe" class="section">
+    <section id="team" class="section">
         <h2 class="section-title">Our Team</h2>
         <div class="team-grid">
             <div class="team-card">
-                <div class="team-photo">AM</div>
-                <h3 class="team-name">Leonord Gibert</h3>
+                <div class="team-photo">LG</div>
+                <h3 class="member-name">Leonard Gibert</h3>
                 <p class="team-role">Designer</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">SC</div>
-                <h3 class="team-name">Noé Guerin</h3>
+                <div class="team-photo">NG</div>
+                <h3 class="member-name">Noé Guerin</h3>
                 <p class="team-role">Programmer</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">LD</div>
-                <h3 class="team-name">Côme Citton</h3>
+                <div class="team-photo">CC</div>
+                <h3 class="member-name">Côme Citton</h3>
                 <p class="team-role">Builder</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">EL</div>
-                <h3 class="team-name">Pierre Sauvegrain</h3>
+                <div class="team-photo">PS</div>
+                <h3 class="member-name">Pierre Sauvegrain</h3>
                 <p class="team-role">Builder</p>
             </div>
             <div class="team-card">
-                <div class="team-photo">EL</div>
-                <h3 class="team-name">Leopold Veneau</h3>
+                <div class="team-photo">LV</div>
+                <h3 class="member-name">Leopold Veneau</h3>
                 <p class="team-role">Designer</p>
             </div>
         </div>
@@ -672,18 +738,48 @@
     <section id="robot" class="robot-section">
         <h2 class="section-title">Our Robot</h2>
         <div class="robot-showcase">
-            <div class="robot-image"><img src="IMG_0761.jpeg"></div>
+            <div class="robot-image">🤖</div>
             <div class="robot-info">
-                <h3>Conception & Performance</h3>
-                <p>Our robot was designed and built entirely by our team in the school’s Makerspace using VEX V5 components.</p>
-                <p>It features a four-motor drive system optimized for acceleration and precise manoeuvring across the 12×12 ft field, enabling rapid transitions between Loaders, Goals, and Park Zones. At the front, a dual-intake mechanism allows for quick and reliable collection of blocks from the field or directly from the Loaders.</p>
+                <h3>Design & Performance</h3>
+                <p>Our robot was designed and built entirely by our team in the school's Makerspace using VEX V5 components.</p>
+                <p>It features a four-motor drive system optimized for acceleration and precise maneuvering across the 12×12 ft field, enabling rapid transitions between Loaders, Goals, and Park Zones. At the front, a dual-intake mechanism allows for quick and reliable collection of blocks from the field or directly from the Loaders.</p>
                 <p>The current version achieves a consistent balance between power, accuracy, and durability, designed to adapt to both offensive strategies (rapid block scoring) and defensive situations (zone control).</p>
                 <div class="robot-features">
-                    <div class="feature">standalone mode</div>
-                    <div class="feature">Contrôle de Précision</div>
-                    <div class="feature">Moteurs Haute Performance</div>
-                    <div class="feature">Capteurs Intelligents</div>
+                    <div class="feature">Autonomous Mode</div>
+                    <div class="feature">Precision Control</div>
+                    <div class="feature">High Performance Motors</div>
+                    <div class="feature">Smart Sensors</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donations Section -->
+    <section id="donate" class="donations-section">
+        <div class="donations-content">
+            <h2 class="section-title">Support Our Team</h2>
+            <p class="donation-text">
+                Help us compete at the highest level! Your donation supports our participation in VEX competitions, 
+                helps us acquire new components, and covers travel expenses. Every contribution makes a difference!
+            </p>
+            
+            <div class="donation-amounts">
+                <button class="donation-btn" onclick="donate(10)">€10</button>
+                <button class="donation-btn" onclick="donate(25)">€25</button>
+                <button class="donation-btn" onclick="donate(50)">€50</button>
+                <button class="donation-btn" onclick="donate(100)">€100</button>
+            </div>
+
+            <div class="custom-amount">
+                <input type="number" class="custom-input" id="customAmount" placeholder="Custom amount (€)" min="1">
+                <button class="donate-custom-btn" onclick="donateCustom()">Donate</button>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-icon">VISA</div>
+                <div class="payment-icon">MC</div>
+                <div class="payment-icon">PAYPAL</div>
+                <div class="payment-icon">AMEX</div>
             </div>
         </div>
     </section>
@@ -693,30 +789,30 @@
         <h2 class="section-title">Our Sponsors</h2>
         <div class="sponsors-grid">
             <div class="sponsor-card">
-                <div class="sponsor-logo"><img src="swissquote_logo.jpg"></div>
+                <div class="sponsor-logo">Swissquote</div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo"><img src="images.png"></div>
+                <div class="sponsor-logo">Sponsor 2</div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo"><img src="space-x-logo.png"></div>
+                <div class="sponsor-logo">Sponsor 3</div>
             </div>
             <div class="sponsor-card">
-                <div class="sponsor-logo"><img src="National_Emblem_of_the_People's_Republic_of_China_(2).svg.png"></div>
+                <div class="sponsor-logo">Sponsor 4</div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="galerie" class="gallery-section">
-        <h2 class="section-title">Galerie</h2>
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
+            <div class="gallery-item">Photo 1</div>
+            <div class="gallery-item">Photo 2</div>
+            <div class="gallery-item">Photo 3</div>
+            <div class="gallery-item">Photo 4</div>
+            <div class="gallery-item">Photo 5</div>
+            <div class="gallery-item">Photo 6</div>
         </div>
     </section>
 
@@ -726,11 +822,12 @@
             <div class="footer-section">
                 <h3>Navigation</h3>
                 <ul class="footer-links">
-                    <li><a href="#accueil">Home</a></li>
-                    <li><a href="#equipe">Our Team</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#team">Our Team</a></li>
                     <li><a href="#robot">Our Robot</a></li>
+                    <li><a href="#donate">Donate</a></li>
                     <li><a href="#sponsors">Sponsors</a></li>
-                    <li><a href="#galerie">Galerie</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -742,18 +839,20 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h3>About us</h3>
+                <h3>About Us</h3>
                 <p style="color: #ccc; font-size: 1rem; line-height: 1.8;">
-                    We are a team passionate about robotics, participating in VEX V5 competitions and proudly representing our school.
+                    We are a passionate robotics team participating in VEX V5 competitions and proudly representing our school.
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 VEX Hyper Cub. All rights reserved.</p>
+            <p>&copy; 2025 VEX Hyper Cube. All rights reserved.</p>
         </div>
     </footer>
 
+    <script src="https://js.stripe.com/v3/"></script>
     <script>
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -767,6 +866,7 @@
             });
         });
 
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -787,6 +887,60 @@
             el.style.transition = 'all 0.6s ease';
             observer.observe(el);
         });
-    </script>
-</body>
-</html>
+
+        // Stripe initialization
+        const stripe = Stripe('pk_test_51QRvFJP3XDIoEhF2CYyV3IkRDxSzLfJwEIyWPnGaGJyGLT34h7RGVnBhGxkVZOFcOlO8bvGKQkfF9HO4xXYk8f1L00tEDKaFBb');
+
+        async function donate(amount) {
+            // Using PayPal for simplicity and reliability
+            const paypalUrl = `https://www.paypal.com/donate/?hosted_button_id=YOUR_BUTTON_ID&amount=${amount}&currency_code=EUR`;
+            window.open(paypalUrl, '_blank');
+            
+            // Alternative: Show success message
+            showDonationMessage(amount);
+        }
+
+        function donateCustom() {
+            const amount = document.getElementById('customAmount').value;
+            if (amount && amount > 0) {
+                donate(amount);
+            } else {
+                alert('Please enter a valid amount');
+            }
+        }
+
+        function showDonationMessage(amount) {
+            alert(`Thank you for your ${amount}€ donation! You will be redirected to PayPal to complete the payment.`);
+        }
+
+        // Alternative: Stripe Payment (requires backend)
+        async function donateWithStripe(amount) {
+            try {
+                // This would need your backend endpoint
+                const response = await fetch('YOUR_BACKEND_URL/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: amount * 100, // Stripe uses cents
+                        currency: 'eur'
+                    })
+                });
+
+                const session = await response.json();
+                
+                // Redirect to Stripe Checkout
+                const stripe = Stripe('YOUR_STRIPE_PUBLISHABLE_KEY');
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id
+                });
+
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        }
